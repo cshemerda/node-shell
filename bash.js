@@ -11,10 +11,17 @@ process.stdin.on('data', (data) => {
 });
 
 const exportsFromPwd = require('./pwd.js');
-
 exportsFromPwd();
+
+const exportsFromCat = require('./cat.js');
+exportsFromCat()
+
+
+function done (output){
+  process.stdout.write(output);
+  process.stdout.write('prompt > ');
+};
 
 
 const exportsFromLs = require('./ls.js');
-exportsFromLs();
-
+exportsFromLs(done);

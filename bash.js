@@ -10,15 +10,11 @@ process.stdin.on('data', (data) => {
   process.stdout.write('\nprompt > ');
 });
 
-process.stdout.write('prompt > ');
+const exportsFromPwd = require('./pwd.js');
 
-// The stdin 'data' event fires after a user types in a line
-process.stdin.on('data', (data) => {
-  const cmd = data.toString().trim(); //remove the newline
-  if (cmd === "pwd"){
-     process.stdout.write(process.cwd());
-     process.stdout.write('\nprompt > ');
-  }
-});
+exportsFromPwd();
 
+
+const exportsFromLs = require('./ls.js');
+exportsFromLs();
 
